@@ -1,0 +1,136 @@
+ <div class="col-lg-6">
+    <div class="row" style="margin-right:10px;  padding:10px; border: 1px solid #DDD;">
+        <div class="table-responsive">
+            <table class="table table-strip" style="margin-bottom: 0px;">
+                <thead>
+                    <tr>
+                        <th class="col-lg-1"></th>
+                        <th class="col-lg-2 bold-text">Date/Time</th>
+                        <th class="col-lg-2 bold-text">Truck</th>
+                        <th class="col-lg-4 bold-text">Farm(s)</th>
+                        <th class="col-lg-2 bold-text">Delivery Time</th>
+                        <th class="col-lg-1 bold-text">Load</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="deltruck in DeliveryTruck">
+                        <td class="col-lg-1">
+                        <button type="button" class="btn btn-xs center-block">
+                        <span class="glyphicon glyphicon-plus undone" style="color:#337ab7; cursor: pointer;"></span>
+                        </button>
+                        </td>
+                        <td class="col-lg-3">{{deltruck.delivery_date | cmdate:'yyyy-MM-dd hh:mm'}}</td>
+                        <td class="col-lg-2">{{deltruck.capacity}} Tons</td>
+                        <td class="col-lg-2">{{deltruck.farm_name}}</td>
+                        <td class="col-lg-3">{{deltruck.delivery_date | cmdate:' a'}}</td>
+                        <td class="col-lg-1">
+                            <a class="btn btn-default btn-xs undone center-block" href="schedule/loading"  aria-label="Left Align">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+             </table>
+        </div>
+    </div>
+    <div class="row" style="margin-right:10px; padding:10px; border: 1px solid #DDD; margin-top:10px;">
+    	<div class="row">
+        	<div class="col-lg-12 Bins">
+                <h5>Bins</h5>
+                <div ng-repeat="DeliveryFarm in DeliveryFarms | orderBy:['bin_two','bin_one']" ng-init="initializeBins(DeliveryFarm);">
+                    <div class="col-lg-1" style="background:{{DeliveryFarm.binonecolor.hex_color}}; height: 50px;
+    border-radius: 5px; border: 1px solid #000;">
+                    	<p>{{DeliveryFarm.bin_one}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-lg-12 Compartments">
+                <h5>Compartments</h5>
+                <img style="z-index:0; margin-left:-20px;" class="img-responsive col-md-4" src="http://feeds.carrierinsite.com/images/truck-front.png"/>
+				<div class="col-md-10"  style="z-index:1; position:absolute; margin-left: 55px;">                
+                    <div ng-repeat="delcom in DeliveryTruckCompartments" class="col-md-1 testing{{delcom.compartment_number}}" style="height: 55px; background: {{delcom.bin_one_color}}; border:1px solid #000;">
+                        {{delcom.compartment_number}}
+                        <style type="text/css">
+						/*
+						*	For Second color of the bin
+						*/
+						.testing{{delcom.compartment_number}}:after {
+							width: 100%;
+							position: absolute;
+							right: 0;
+							top: 26px;
+							content: "";
+							display: block;
+							height: 50%;
+							background-color: {{delcom.bin_two_color}};
+						  }
+                         </style>
+                    </div>
+                </div>    
+                <img style="z-index:0; position:absolute; margin-left: 350px;
+    margin-top: 10px;" class="img-responsive col-md-4" src="http://feeds.carrierinsite.com/images/truck-back.png" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="row row-margin" ng-repeat="deltruck in DeliveryTruck">
+        <div class="col-md-3"><strong>Delivery Date:</strong> {{deltruck.delivery_date | cmdate:'yyyy-MM-dd'}}</div>
+        <div class="col-md-3"><strong>Delivery Time:</strong> {{deltruck.delivery_date | cmdate:'hh:mm'}}</div>
+        <div class="col-md-3"><strong>Time of the Day:</strong> {{deltruck.delivery_date | cmdate:' a'}}</div>
+        <div class="col-md-3"><strong>Truck:</strong> {{deltruck.capacity}} Tons</div>
+    </div>
+    <div class="row row-margin">
+        <div class="row row-margin">
+        	<div class="col-md-12">
+                <div class="col-md-2"><strong>Farm</strong></div>
+                <div class="col-md-2"><strong>Batch</strong></div>
+                <div class="col-md-2"><strong>Type</strong></div>
+                <div class="col-md-2"><strong>Amount</strong></div>
+                <div class="col-md-2"><strong>Bin(s)</strong></div>
+                <div class="col-md-2"><strong>Load</strong></div>
+            </div>
+        </div>
+        <div class="row row-margin" ng-repeat="DeliveryFarm in DeliveryFarms">
+			<div class="col-md-12">        	
+                <div class="col-md-2">{{DeliveryFarm.name}}</div>
+                <div class="col-md-2">{{DeliveryFarm.batch_code}}</div>
+                <div class="col-md-2">{{DeliveryFarm.feedsname}}</div>
+                <div class="col-md-2">{{DeliveryFarm.amount}} Tons</div>
+                <div class="col-md-2">{{DeliveryFarm.binonecolor.bin_number}}</div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-xs btn-default" ng-click="sliderMe();">
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="false"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-12" ng-if="slider">
+                <div class="form-horizontal">
+                  <div class="form-group" style="margin-bottom: 0px;">
+                    <div class="col-sm-6 col-sm-offset-2 control-label">Choose compartment number:</div>
+					<div class="col-sm-3">
+                        <select class="form-control input-sm" name="" ng-model="comnumber"
+                        ng-options="com.compartment_number for com in DeliveryCompartments"
+                        ng-change="updateCompartments(DeliveryFarm)" ng-click="binColorInit(DeliveryFarm)" ng-init="binColorInit(DeliveryFarm)"
+                        required >
+                        	<option value="" selected disabled>Select...</option>
+                        </select>
+                    </div>    
+                  </div>
+                </div>
+            </div>    
+        </div>
+        <div class="row row-margin">
+            <div class="col-lg-6">
+                <button type="button" ng-click="cancelLoad()" class="btn btn-md btn-info center-block">Cancel</button>
+            </div>
+            <div class="col-lg-6">
+                <button type="button" ng-click="createLoad()" class="btn btn-md btn-info center-block">Load</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" ng-include="'http://feeds.carrierinsite.com/js/angular_modules/partials/tables/consumption/index.html'"></div>

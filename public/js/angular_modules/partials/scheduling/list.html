@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-lg-2 bold-text">Delivery Date</th>
+                    <th class="col-lg-2 bold-text">Delivery Time</th>
+                    <th class="col-lg-2 bold-text">Truck</th>
+                    <th class="col-lg-4 bold-text">Farm(s)</th>
+                    <th class="col-lg-1 bold-text">Load</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr ng-repeat="BatchList in BatchLists">
+                    <td class="col-lg-2">{{BatchList.delivery_date | cmdate:'yyyy-MM-dd'}}</td>
+                    <td class="col-lg-2">{{BatchList.delivery_date | cmdate:'hh:mm a'}}</td>
+                    <td class="col-lg-2">{{BatchList.name}}<small class="pull-right">{{BatchList.capacity}} Tons</small></td>
+                    <td class="col-lg-4">{{BatchList.farm_name}}</td>
+                    <td class="col-lg-1">
+                        <!--<a class="btn btn-default btn-xs undone center-block" href="schedule/loading/{{BatchList.delivery_id}}"  aria-label="Left Align">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </a>-->
+                        <a href="loading/{{BatchList.delivery_id}}" class="btn btn-info center-block" data-placement="top" title="Enter the number of bins for this farm">
+                        <span class="glyphicon glyphicon-plus" style="color:#FFFFFF; cursor: pointer;"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+         </table>
+    </div>
+</div>

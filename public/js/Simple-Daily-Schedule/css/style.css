@@ -1,0 +1,196 @@
+
+#schedule{
+}
+#schedule .clear{ clear:both; height: 0; line-height: 0;}
+#schedule .sc_wrapper{
+}
+#schedule .sc_menu{
+	width:100%;
+	height:26px;
+}
+#schedule .sc_menu .sc_header_cell{
+	float:left;
+}
+#schedule .sc_menu .sc_header{
+	float:left;
+	height:26px;
+	position:relative;
+	//overflow:hidden;
+}
+#schedule .sc_menu .sc_header .sc_time{
+	text-align:center;
+	border-left:solid 1px #FFF;
+	background:#20517B;
+	width: 60px !important;//width: 66px !important;
+}
+#schedule .sc_menu .sc_header_cell,
+#schedule .sc_data{
+	float:left;
+	font-weight:bold;
+	color:#FFFFFF;
+	background:#20517B;
+	position:relative;
+}
+#schedule .sc_menu .sc_header_scroll,
+#schedule .sc_data .sc_data_scroll{
+	position:absolute;
+	left:0;
+	top:0;
+}
+#schedule .sc_menu .sc_header_cell,
+#schedule .sc_header .sc_time,
+#schedule .sc_main_scroll .sc_time{
+	color:#FFFFFF;
+	padding:4px 0;
+	line-height:18px;
+	height:25px;
+	display:block;
+	text-align:center;
+}
+#schedule .sc_header .sc_time,
+#schedule .sc_main_scroll .sc_time{
+	float:left;
+}
+#schedule .sc_main_box,
+#schedule .sc_data{
+	max-height:500px;
+	overflow:hidden;
+}
+#schedule .sc_main_box{
+	float:left;
+	//overflow-x:auto;
+	//overflow-y:auto;
+}
+#schedule .sc_main_scroll{
+}
+#schedule .sc_main{
+	position:relative;
+}
+#schedule .timeline{
+	position:relative;
+}
+#schedule .sc_Bar{
+	position:absolute;
+	color:#FFF;
+	//background:#4f93d6;
+	background: #0000ff;
+	cursor:pointer;
+	z-index:10;
+	height: 25px !important;
+	margin-top: 2px;
+	//border: 1px solid #FFFFFF;
+	box-shadow: 1px 1px 2px #333;
+	-moz-box-shadow: 1px 1px 2px #333;
+	-webkit-box-shadow: 1px 1px 2px #333;
+}
+#schedule .ui-draggable-dragging,
+#schedule .ui-resizeable{
+	z-index:20;
+}
+#schedule .sc_Bar .head{
+	//display:block;
+	display:none;
+	padding:6px 8px 0;
+	font-size:12px;
+	height:16px;
+	//overflow:hidden;
+}
+#schedule .sc_Bar .text{
+	display:block;
+	padding:2px 15px 0;
+	font-weight:normal;
+	height:21px;
+	overflow: hidden !important;
+    text-overflow: ellipsis !important;
+	//overflow:hidden;
+	text-align:center;
+}
+#schedule .timeline,
+#schedule .sc_main .tb{
+	border-bottom:solid 2px #666;
+}
+#schedule .sc_data .timeline{
+	overflow:hidden;
+	text-align: center !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 2.0 !important;
+	font-weight:bold !important;
+}
+#schedule .sc_data .timeline span{
+	//padding:10px;
+	padding-left: 7px;
+	font-weight: normal;
+	display:block;
+	font-size: 15px;
+    word-wrap: break-word;
+}
+#schedule .sc_data .timeline span.photo{
+	float:left;
+	width:36px;
+	height:36px;
+	padding:10px 0 10px 10px;
+}
+#schedule .sc_data .timeline span.title{
+	float:left;
+	padding:10px 0 10px 10px;
+	width:92px;
+}
+#schedule .sc_main_scroll .sc_main{
+}
+#schedule .sc_main_scroll .sc_main .tl{
+	float:left;
+	height:100%;
+	border-right:solid 1px #bbb1b1;
+	background: #FFFFFF !important;
+}
+#schedule .sc_main_scroll .sc_main .tl:hover{
+	background:#F0F0F0;
+}
+
+
+.timeline-holder-0{
+	//background: #F00 !important;
+}
+
+.timeline-holder-1{
+	//background: #0767D6 !important;
+}
+
+.timeline-holder-2{
+	//background: #00D400 !important;
+}
+
+.timeline-holder-3{
+	//background: #B13131 !important;
+}
+
+.timeline-holder-4{
+	//background: #D28401 !important;
+}
+
+.timeline-holder-5{
+	//background: #351B1B !important;
+}
+
+.delivered-items{
+	background: #000000 !important;
+}
+
+.pending-items {
+	background: #008000 !important;
+}
+
+.unloaded-items {
+	background: #ff0000 !important;
+}
+
+.drivers-lists {
+	cursor: pointer !important;
+}
+
+.total_tons_sched_tool{
+
+}

@@ -1,0 +1,1 @@
+<div class="panel-body" ng-app="handhApp" ng-include="'js/angular_modules/partials/home/scheduling-form.html'"></div>

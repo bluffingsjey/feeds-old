@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped" style="margin-bottom: 0px;">
+            <thead>
+                <tr>
+                    <th class="col-lg-2 bold-text home-table-list-font">Delivery Date: <span class="normal-text">
+                    	<input type="text" class="form-control input-sm" datepicker ng-model="deliverydate"/></span>
+                    </th>
+                    <th class="col-lg-2 bold-text home-table-list-font">Delivery Time: <span class="normal-text">
+                    	<input type="text" class="form-control input-sm" timepicker ng-model="deliverytime"/></span>
+                    </th>
+                    <th class="col-lg-2 bold-text home-table-list-font">Time of the Day: <span class="normal-text">
+                    	<select name="" class="form-control input-sm" ng-model="delivey_ampm.text">
+                            <option value="am">AM</option>
+                            <option value="pm">PM</option>
+                        </select>
+                    </th>
+                    <th class="col-lg-2 bold-text home-table-list-font">Truck: <span class="normal-text">
+                        <select name="repeatSelect" class="form-control input-sm" ng-model="trucks.selected"
+                        ng-options="truck.name for truck in trucks track by truck.truck_id">
+                        	<option value="" selected disabled>Select...</option>
+                        </select>
+                        </span>
+                    </th>
+                    <th class="col-lg-2 bold-text home-table-list-font">Driver: <span class="normal-text">
+                        <select name="repeatSelect" class="form-control input-sm" ng-model="drivers.selected"
+                        ng-options="driver.username for driver in drivers track by driver.id">
+                        	<option value="" selected disabled>Select...</option>
+                        </select>
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+         </table>
+    </div>
+</div>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered" style="margin-bottom: 0px;">
+            <thead>
+                <tr>
+                    <th class="col-lg-2 text-center">Farm</th>
+                    <th class="col-lg-2 text-center">Batch</th>
+                    <th class="col-lg-2 text-center">Type</th>
+                    <th class="col-lg-2 text-center">Amount</th>
+                    <th class="col-lg-3 text-center">Bin(s)</th>
+                    <th class="col-lg-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="loadElem in loadingElements">
+                    <td class="col-lg-2 small">{{loadElem.farm}}</td>
+                    <td class="col-lg-2 small">{{loadElem.batch}}</td>
+                    <td class="col-lg-2 small">{{loadElem.type}}</td>
+                    <td class="col-lg-2 small">{{loadElem.amount}}</td>
+                    <td class="col-lg-3 small">{{loadElem.bin_one}}{{loadElem.bin_two}}</td>
+                    <td class="col-lg-1">
+                    	<button type="button" ng-click="removeLoading($index)" class="btn btn-default undone center-block" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+<div class="col-md-12" style="margin-top: 10px;">
+    <form role="form" name="loadForm" class="form-horizontal">
+        <div class="col-md-2">
+            <select name="farm" class="form-control" ng-model="farms.selected"
+            ng-options="farm.name for farm in farms track by farm.id" ng-change="update()" required >
+            <option value="" selected disabled>Farms...</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input name="batch" ng-model="batch.text" type="text" class="form-control" placeholder="Batch" autocomplete="off" required />
+        </div>
+        <div class="col-md-2">
+            <select name="feedsType" class="form-control" ng-model="feeds.selected"
+            ng-options="feed.name for feed in feeds track by feed.type_id" required>
+            <option value="" selected disabled>Type...</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="feedsAmount" class="form-control " ng-model="amounts.selected"
+            ng-options="amount for amount in amounts track by amount" required>
+            <option value="" selected disabled>Amount...</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+                    <select name="bin1" class="form-control " ng-model="bin_one.selected_one"
+                    ng-options="binone.bin_number for binone in bin_one track by binone.bin_id" required>
+                    <option value="" selected disabled>Bins...</option>
+                    </select>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" ng-disabled="loadForm.$invalid" data-ng-click="addLoading(batch,amounts)" class="btn btn-default center-block">
+            <span class="glyphicon glyphicon-plus" style="color:#337ab7; cursor: pointer;"></span>
+            </button>
+        </div>
+    </form>
+</div>    
+</div>
+<div class="row" style="margin-top: 15px;">
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-md btn-info center-block" ng-click="deleteBatch()">Cancel</button>
+    </div>
+    <div class="col-lg-6">
+    	<form name="formBatch">
+        	<input type="hidden" ng-model="databatch.deldate" value="{{deliverydate}}"/>
+            <input type="hidden" ng-model="databatch.deltime" value="{{deliverytime}}"/>
+            <input type="hidden" ng-model="databatch.delampm" value="{{delivey_ampm.text}}"/>
+            <input type="hidden" ng-model="databatch.deltruck_id" value="{{trucks.selected.truck_id}}"/>
+        	<button type="submit" class="btn btn-md btn-info center-block" ng-click="saveBatch(deliverydate,deliverytime,delivey_ampm.text,trucks.selected.truck_id,drivers.selected.id)">Save</button>
+    	</form>
+    </div>
+</div>

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,12 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Inspire::class,
+		'App\Console\Commands\ConsumptionAutoUpdater',
+		'App\Console\Commands\TurnOnFarms',
+		'App\Console\Commands\BuildBinsCache',
+		'App\Console\Commands\StartWebSocket',
+		'App\Console\Commands\ForecastingCache',
+    'App\Console\Commands\SchedulingCache',
     ];
 
     /**
@@ -24,7 +30,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+      $schedule->command('forecastingdatacache')->everyMinute();
+      $schedule->command('schedulingcache')->everyMinute();
+    	$schedule->command('consumption')->dailyAt('01:15');
+    	$schedule->command('turnonfarms')->dailyAt('01:00');
+    	$schedule->command('buildbinscache')->dailyAt('02:00');
+    	$schedule->command('startwebsocket')->dailyAt('06:46');
+    	/*$schedule->call('\App\Http\Controllers\HomeController@testCron')->dailyAt("05:27")
+    			 ->sendOutputTo(storage_path().'/logs/cron.log');*/
     }
+
+
 }

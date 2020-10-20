@@ -1,0 +1,57 @@
+<div class="row" style="border-top: #C2BCBC 2px solid; margin-top: 20px;">
+    <div class="col-lg-4" style="margin-top:5px;">
+        <h4 class="text-left"><a href="#"  class="undone" style="font-weight: bolder; text-decoration: none;">Consumption <span style="font-weight:normal;">| Drivers</span></a></h4>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 text-right" style="margin-top:5px;">
+        <span>View by: </span>
+        <div class="btn-group">
+          <button style="color:#337ab7; font-weight:bold;" class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Adjusted Empty Date (low to high) <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class=""><a href="#" class="undone">Adjusted Empty Date (low to high)</a></li>
+            <li class=""><a href="#" class="undone">Current Empty Date (low to high)</a></li>
+            <li class=""><a href="#" class="undone">Last Updated (old to now)</a></li>
+          </ul>
+        </div>
+        <span class="glyphicon glyphicon-fullscreen undone" aria-hidden="true" style=" display:none; color:#7E7E7E; font-size: 20px;line-height: inherit; cursor:pointer;"></span>
+    </div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+    	<!--Div that will hold the pie chart-->
+    	<div id="top_x_div" style="width: 900px; height: 300px; display:none;"></div>
+    </div>
+    <div class="col-lg-12">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-7">
+        	<div class="col-md-1 bold-text">Today</div>
+            <div class="col-md-2 bold-text">Tuesday</div>
+            <div class="col-md-2 bold-text">Wednesday</div>
+            <div class="col-md-2 bold-text">Thursday</div>
+            <div class="col-md-1 bold-text">Friday</div>
+            <div class="col-md-2 bold-text">Saturday</div>
+            <div class="col-md-2 bold-text">Sunday</div>
+        </div>
+        <div class="col-lg-1 bold-text">Delivery</div>
+        <div class="col-lg-1 bold-text">Variance</div>
+        <div class="col-lg-1 bold-text">Last Update</div>
+        <div class="col-lg-1 bold-text text-center">Notes</div>
+    </div>
+    <div class="col-lg-12" ng-repeat="DeliveryFarm in DeliveryFarms">
+        <div class="col-lg-1 home-table-list-font">{{DeliveryFarm.name}} Bin {{DeliveryFarm.binonecolor.bin_number}}</div>
+        <div class="col-lg-7">
+        	<div class="progress">
+              <div class="progress-bar progress-bar-danger align-tr"  aria-valuenow="20.30" aria-valuemin="0.00" aria-valuemax="100.00" style="width: 20.30%">
+                <span class="align-tr-margin">20.30</span>
+              </div>
+              <div class="progress-bar progress-bar-success align-tr" aria-valuenow="30.55" aria-valuemin="0.00" aria-valuemax="100.00" style="width: 30.66%">
+                <span class="align-tr-margin">30.55</span>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-1">4.5</div>
+        <div class="col-lg-1">+.25</div>
+        <div class="col-lg-1 home-table-list-font">5/10 10:02 am Steeve Smith</div>
+        <div class="col-lg-1 text-center"><span class="glyphicon glyphicon-list-alt text-center undone" style="cursor:pointer;"></span></div>
+    </div>
+</div>
